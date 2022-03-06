@@ -1,5 +1,5 @@
 # How to run
-
+Install Docker, then run
 
 ```
 docker-compose up -d
