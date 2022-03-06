@@ -1,7 +1,8 @@
 version: "3.9"
 services:
   web:
-    build: .
+    # build: . # uncomment if you're building image using Dockerfile
+    image: huedaya/flask-opencv:latest
     container_name: app-${MK_APP_ID}
     volumes:
       - ./app:/app
