@@ -3,11 +3,25 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
- 
+.query .col-md-6 {
+  overflow: hidden;
+}
+.query img {
+ height: 250px !important;
+}
 .active {
   border: 5px solid red;
 }
-
+.query img.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  z-index: 3;
+}
 .result-img {
   max-width: 100px;
   max-height: 100px;

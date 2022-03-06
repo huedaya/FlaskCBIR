@@ -5,7 +5,7 @@ Install Docker, then run
 docker-compose up -d
 ```
 
-and access http://localhost:5000
+and access http://localhost:6079
 
 ## problem
 still not finding the CBIR dataset

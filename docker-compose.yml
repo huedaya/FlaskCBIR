@@ -2,7 +2,23 @@ version: "3.9"
 services:
   web:
     build: .
+    container_name: app-${MK_APP_ID}
     volumes:
       - ./app:/app
     ports:
-      - "5000:5000"
+      - ${APP_HTTPS_PORT}:5000
+    networks:
+      - local
+      - proxy
+    labels:
+      - "traefik.http.routers.${MK_APP_ID}-secure.rule=(Host(`${HOST}`))"
+      - "traefik.http.routers.${MK_APP_ID}-secure.entrypoints=websecure"
+      - "traefik.docker.network=proxy"
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.${MK_APP_ID}-ratelimit.ratelimit.average=5"
+      - "traefik.http.middlewares.${MK_APP_ID}-ratelimit.ratelimit.burst=2"
+
+networks:
+  local:
+  proxy:
+    external: true

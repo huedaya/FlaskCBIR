@@ -6,7 +6,7 @@
 $("#error").hide();
 
 // global
-var url = 'http://static.pyimagesearch.com.s3-us-west-2.amazonaws.com/vacation-photos/dataset/';
+var url = 'https://mk-main.sgp1.digitaloceanspaces.com/cbir-dataset/example/example/';
 var data = [];
 
 $(function() {
@@ -15,8 +15,8 @@ $(function() {
   console.log( "ready!" );
 
   // image click
-  $(".img").click(function() {
-
+  $(".query img").click(function() {
+    $('.query img').removeClass("active");
     // empty/hide results
     $("#results").empty();
     // $("#results-table").hide();
