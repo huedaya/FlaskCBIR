@@ -1,13 +1,9 @@
 import os
- 
+import cv2
 from flask import Flask, render_template, request, jsonify
- 
 from pyimagesearch.colordescriptor import ColorDescriptor
 from pyimagesearch.searcher import Searcher
-
 from skimage import io
-
-import cv2
 
 INDEX = os.path.join(os.path.dirname(__file__), 'index.csv')
 
@@ -23,16 +19,16 @@ def index():
 # search route
 @app.route('/search', methods=['POST'])
 def search():
- 
+
 	if request.method == "POST":
- 
+
 		RESULTS_ARRAY = []
- 
+
 		# get url
 		image_url = request.form.get('img')
- 
+
 		try:
- 
+
 			# initialize the image descriptor
 			cd = ColorDescriptor((8, 12, 3))
 
@@ -43,7 +39,7 @@ def search():
 			(r, g, b) = cv2.split(query)
 			query = cv2.merge([b, g, r])
 			features = cd.describe(query)
-			
+
 
 			# perform the search
 			searcher = Searcher(INDEX)
@@ -57,9 +53,9 @@ def search():
 
 			# return success
 			return jsonify(results=(RESULTS_ARRAY[::-1][:3]))
- 
+
 		except:
- 
+
 			# return error
 			return (jsonify({"sorry": "Sorry, no results! Please try again."}), 500)
 
