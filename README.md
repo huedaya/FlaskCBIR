@@ -7,7 +7,7 @@ docker-compose up -d
 
 and access http://localhost:6079
 
-or live demo https://cbir-demo.melonkotak.com/
+or live demo https://cbir-demo.melonkotak.website/ (only alive until 2022/03/20)
 
 ## problem
 still not finding the CBIR dataset
